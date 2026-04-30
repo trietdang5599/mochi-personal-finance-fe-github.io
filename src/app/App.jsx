@@ -273,19 +273,21 @@ export function App() {
 
       {modal?.kind === 'confirm' && (
         <Modal title={modal.title} onClose={() => setModal(null)}>
-          <p className="confirm-message">{modal.message}</p>
-          <div className="modal-footer">
-            <button className="btn btn-ghost" onClick={() => setModal(null)}>Cancel</button>
-            <button
-              className="btn btn-danger"
-              onClick={() => {
-                modal.onConfirm();
-                setModal(null);
-                context.notify('Deleted');
-              }}
-            >
-              Confirm
-            </button>
+          <div className="modal-body confirm-body">
+            <p className="confirm-message">{modal.message}</p>
+            <div className="modal-footer">
+              <button className="btn btn-ghost" onClick={() => setModal(null)}>Cancel</button>
+              <button
+                className="btn btn-danger"
+                onClick={() => {
+                  modal.onConfirm();
+                  setModal(null);
+                  context.notify('Deleted');
+                }}
+              >
+                Confirm
+              </button>
+            </div>
           </div>
         </Modal>
       )}
